@@ -1,0 +1,23 @@
+@import './public.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.f-w-b {
+  font-weight: bold;
+}
+.p-1 {
+  padding: $pd1;
+}
+.pt-1 {
+  padding-top: $pd1;
+}
+.mt-1 {
+  margin-top: $pd1;
+}
+.text-c {
+  text-align: center;
+}

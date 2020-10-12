@@ -1,14 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import layout from '@/layout'
 
 Vue.use(VueRouter)
 
-const routes = [
+const publicRoutes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login'),
+    meta: { name: '登录', icon: '' }
+  },
+  {
+    path: '/home',
+    component: layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/home'),
+        meta: { name: '首页', icon: '' },
+      }
+    ]
   },
   {
     path: '/about',
@@ -20,10 +36,12 @@ const routes = [
   }
 ]
 
+// const asyncRoutes = []
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes: publicRoutes
 })
 
 export default router
