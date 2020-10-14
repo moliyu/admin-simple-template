@@ -29,6 +29,7 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.3",
     "style-resources-loader": "^1.3.2",
+    "svg-sprite-loader": "^5.0.0",
     "vue-cli-plugin-axios": "~0.0.4",
     "vue-cli-plugin-element-ui": "~1.1.4",
     "vue-cli-plugin-style-resources-loader": "~0.1.4",

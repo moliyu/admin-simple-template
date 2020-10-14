@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+  box-sizing: border-box;
 }
 
 .f-w-b {
@@ -18,6 +19,18 @@
 .mt-1 {
   margin-top: $pd1;
 }
+.mr-1 {
+  margin-right: $pd1;
+}
+.mr-2 {
+  margin-right: $pd2;
+}
+.mr-3 {
+  margin-right: $pd3;
+}
 .text-c {
   text-align: center;
+}
+.flex {
+  flex: 1;
 }

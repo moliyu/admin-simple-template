@@ -8,7 +8,6 @@ router.beforeEach(async(to, from, next) => {
   nprogress.start()
   document.title = to.meta.name
   const token = store.state.user.token
-  console.log('token', token, to)
   if (token) {
     if (to.path === '/login') {
       next({ path: '/home' })
@@ -17,9 +16,14 @@ router.beforeEach(async(to, from, next) => {
       next()
       nprogress.done()
     } else {
-      const res = await store.dispatch('user/auth', token)
-      console.log('mmm',  res)
-      next()
+      if (store.state.user.userId) {
+        next()
+      } else {
+        const res = await store.dispatch('user/auth', token)
+        const permissionRoutes = await store.dispatch('router/getRoutes', { roles: res.authorities, names: res.resources })
+        await router.addRoutes(permissionRoutes)
+        next({ ...to, replace: true })
+      }
       nprogress.done()
     }
   } else if (whiteList.includes(to.path)) {

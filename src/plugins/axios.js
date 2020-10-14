@@ -2,6 +2,8 @@
 
 import axios from "axios";
 import store from '@/store'
+import router from '@/router'
+import { Message } from 'element-ui'
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -34,7 +36,17 @@ instance.interceptors.response.use(
     // Do something with response data
     return response.data;
   },
-  function(error) {
+  async function(error) {
+    if (error.response.status === 403) {
+      Message.warning('登录失效')
+      await store.dispatch('user/resetLogin')
+      router.push({ path: '/login' })
+    }
+    if (error.response.status === 401) {
+      Message.error('没有访问权限')
+      await store.dispatch('user/resetLogin')
+      router.push({ path: '/login' })
+    }
     // Do something with response error
     return Promise.reject(error.response.data);
   }

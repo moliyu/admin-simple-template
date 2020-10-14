@@ -6,6 +6,7 @@ import store from './store'
 import '@/styles/common.scss'
 import ElementUI from 'element-ui'
 import '@/utils/permission'
+import './plugins/svg'
 import './styles.scss'
 
 Vue.use(ElementUI)

@@ -11,4 +11,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.router-link-active {
+  color: red;
+}
+
 </style>
